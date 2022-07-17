@@ -5,6 +5,7 @@ const { Sessions } = require('./sessions.js');
 const { serveStartPage } = require('./handlers/serveStartPage');
 const { serveLoginForm } = require('./handlers/serveLoginForm.js');
 const { newLogin } = require('./handlers/newLogin.js');
+const { logoutHandler } = require('./handlers/logout.js');
 
 const logRequest = (logger) =>
   (req, res, next) => {
@@ -29,6 +30,7 @@ const createApp = (config = defaultConfig, logger) => {
   app.get('/play', serveStartPage);
   app.get('/login*', serveLoginForm);
   app.post('/login', newLogin(sessions));
+  app.get('/logout', logoutHandler(sessions));
 
   app.use(express.static(sourceDir));
   return app;
