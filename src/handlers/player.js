@@ -4,9 +4,8 @@ class Player {
     this.moves = [];
   }
 
-  getMove() {
-    const [move] = this.moves.slice(-1);
-    return move;
+  getMoves() {
+    return this.moves.slice(0).sort();
   }
 
   addMove(move) {

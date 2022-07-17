@@ -1,7 +1,8 @@
 # TODO
 
-  - [ ] Update moves in each page
-  - [ ] Switch player
+  - [ ] Check the winning logic
+  - [ ] Sign up page
+  - [ ] Different state messages
 
 # DONE
 
@@ -16,3 +17,6 @@
   - [x] Create join handler
   - [x] Serve game page for joiner
   - [x] Register a move
+  - [x] Update moves in each page
+  - [x] Switch player
+  - [x] Display each player the updated moves

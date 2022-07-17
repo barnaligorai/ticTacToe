@@ -40,8 +40,8 @@ const gamePage = (playerName, roomNo, message) => {
         </div>
       </div>
     
-      <div id="status">
-        <h2>${message}</h2>
+      <div>
+        <h2 id="status">${message}</h2>
       </div>
       
     </div>

@@ -43,10 +43,31 @@ class Game {
 
     if (playerName !== this.lastPlayed.name) {
       this.#moves[pos - 1] = currentPlayer.symbol;
+      currentPlayer.addMove(pos - 1);
       this.lastPlayed = currentPlayer;
       return 'Marked';
     }
     return 'Not your turn';
+  }
+
+  #isDrawn() {
+    return !this.#moves.includes('');
+  }
+
+  #isWon() {
+    const winningMoves = ['012', '345', '678', '036', '147', '258', '048', '246'];
+    const moves = this.lastPlayed.getMoves();
+    const result = winningMoves.includes(moves.join(''));
+    return result ? this.lastPlayed.name : null;
+  }
+
+  stats() {
+    const result = {
+      isWon: this.#isWon(),
+      isDrawn: this.#isDrawn(),
+      moves: this.#moves.slice(0),
+    }
+    return result;
   }
 }
 
