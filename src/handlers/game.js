@@ -28,6 +28,26 @@ class Game {
     }
     return false;
   }
+
+  #isPosOccupied(pos) {
+    return this.#moves[pos - 1] !== '';
+  }
+
+  updateMove(pos, playerName) {
+    if (this.#isPosOccupied(pos)) {
+      return 'Position occupied';
+    }
+
+    const currentPlayer = this.#players.find(({ name }) =>
+      name === playerName);
+
+    if (playerName !== this.lastPlayed.name) {
+      this.#moves[pos - 1] = currentPlayer.symbol;
+      this.lastPlayed = currentPlayer;
+      return 'Marked';
+    }
+    return 'Not your turn';
+  }
 }
 
 module.exports = { Game };

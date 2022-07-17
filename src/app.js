@@ -10,6 +10,7 @@ const { hostHandler } = require('./handlers/hostHandler.js');
 const { gameHandler } = require('./handlers/gameHandler.js');
 const { serveJoinForm } = require('./handlers/serveJoinForm.js');
 const { joinHandler } = require('./handlers/joinHandler.js');
+const { markMove } = require('./handlers/markMove.js');
 
 const logRequest = (logger) =>
   (req, res, next) => {
@@ -42,6 +43,8 @@ const createApp = (config = defaultConfig, logger) => {
 
   app.get('/join', serveJoinForm);
   app.post('/join-game', joinHandler(games));
+
+  app.post('/mark-move', markMove(games));
 
   app.use(express.static(sourceDir));
   return app;

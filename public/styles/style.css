@@ -1,0 +1,23 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.cell{
+  width: 120px;
+  aspect-ratio: 1;
+  background-color: lightgray;
+  border: 1px solid grey;
+  font-size: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.row{
+  display: flex;
+}
+
+#status{
+  margin-top: 10px;
+}

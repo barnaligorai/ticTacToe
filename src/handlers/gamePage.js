@@ -22,7 +22,7 @@ const gamePage = (playerName, roomNo, message) => {
 
     <div class="game">
     
-      <div class="grid">
+      <div id="grid">
         <div class="row">
           <div class="cell" id="1"></div>
           <div class="cell" id="2"></div>

@@ -1,6 +1,5 @@
 # TODO
 
-  - [ ] Register a move
   - [ ] Update moves in each page
   - [ ] Switch player
 
@@ -16,3 +15,4 @@
   - [x] Create join page
   - [x] Create join handler
   - [x] Serve game page for joiner
+  - [x] Register a move
