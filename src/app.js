@@ -6,6 +6,8 @@ const { serveStartPage } = require('./handlers/serveStartPage');
 const { serveLoginForm } = require('./handlers/serveLoginForm.js');
 const { newLogin } = require('./handlers/newLogin.js');
 const { logoutHandler } = require('./handlers/logout.js');
+const { hostHandler } = require('./handlers/hostHandler.js');
+const { gameHandler } = require('./handlers/gameHandler.js');
 
 const logRequest = (logger) =>
   (req, res, next) => {
@@ -21,6 +23,7 @@ const createApp = (config = defaultConfig, logger) => {
   const app = express();
   const { sourceDir } = config;
   const sessions = new Sessions();
+  const games = {};
 
   app.use(logRequest(logger));
   app.use(express.urlencoded({ extended: true }));
@@ -31,6 +34,9 @@ const createApp = (config = defaultConfig, logger) => {
   app.get('/login*', serveLoginForm);
   app.post('/login', newLogin(sessions));
   app.get('/logout', logoutHandler(sessions));
+
+  app.get('/host', hostHandler(games));
+  app.get('/game', gameHandler(games));
 
   app.use(express.static(sourceDir));
   return app;

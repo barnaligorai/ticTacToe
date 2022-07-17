@@ -7,4 +7,5 @@ const newLogin = (sessions) => (req, res, next) => {
   res.cookie('sessionId', sessionId);
   res.redirect('/start.html');
 };
+
 exports.newLogin = newLogin;
