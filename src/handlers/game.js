@@ -28,38 +28,6 @@ class Game {
     }
     return false;
   }
-
-  switchPlayer() {
-    const [player1, player2] = this.#players;
-    this.currentPlayer = this.currentPlayer === player1 ? player2 : player1;
-  }
-
-  markMove(move) {
-    this.currentPlayer.addMove(move);
-    this.moves[move - 1] = this.currentPlayer.symbol;
-  }
-
-  isWon() {
-    const moves = this.currentPlayer.moves;
-    const winningMoves = ['123', '456', '789', '147', '258', '369', '159', '357'];
-    const result = winningMoves.some(
-      winMove => winMove.split('').every(move => moves.includes(move)));
-    this.win = result ? this.currentPlayer.name : null;
-  }
-
-  isDraw() {
-    this.draw = this.moves.length >= 9;
-  }
-
-  get status() {
-    return {
-      win: this.win,
-      draw: this.draw,
-      moves: this.moves,
-      message: this.message
-    };
-  }
-
 }
 
 module.exports = { Game };

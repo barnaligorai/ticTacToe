@@ -8,6 +8,8 @@ const { newLogin } = require('./handlers/newLogin.js');
 const { logoutHandler } = require('./handlers/logout.js');
 const { hostHandler } = require('./handlers/hostHandler.js');
 const { gameHandler } = require('./handlers/gameHandler.js');
+const { serveJoinForm } = require('./handlers/serveJoinForm.js');
+const { joinHandler } = require('./handlers/joinHandler.js');
 
 const logRequest = (logger) =>
   (req, res, next) => {
@@ -37,6 +39,9 @@ const createApp = (config = defaultConfig, logger) => {
 
   app.get('/host', hostHandler(games));
   app.get('/game', gameHandler(games));
+
+  app.get('/join', serveJoinForm);
+  app.post('/join-game', joinHandler(games));
 
   app.use(express.static(sourceDir));
   return app;
