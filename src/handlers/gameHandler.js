@@ -8,7 +8,7 @@ const gameHandler = games => (req, res) => {
 
   const { gameId } = req.session;
   const game = games[gameId];
-  const playerName = game.lastPlayed.name;
+  const playerName = req.session.username;
   const message = 'Waiting for the other player to join...';
   const page = gamePage(playerName, gameId, message);
   res.end(page);

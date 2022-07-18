@@ -5,7 +5,7 @@ class Game {
   lastPlayed;
   #maxPlayers;
 
-  constructor(host, gameId = 1) {
+  constructor(host, gameId = 0) {
     this.#players = [host];
     host.setSymbol('X');
     this.#id = gameId;
@@ -57,7 +57,10 @@ class Game {
   #isWon() {
     const winningMoves = ['012', '345', '678', '036', '147', '258', '048', '246'];
     const moves = this.lastPlayed.getMoves();
-    const result = winningMoves.includes(moves.join(''));
+    const result = winningMoves.some(combination =>
+      combination.split('').every(move =>
+        moves.includes(+move)));
+
     return result ? this.lastPlayed.name : null;
   }
 

@@ -1,8 +1,10 @@
 # TODO
 
-  - [ ] Check the winning logic
   - [ ] Sign up page
+  - [ ] Show the opponent's name
   - [ ] Different state messages
+  - [ ] Notify that the other player has left
+
 
 # DONE
 
@@ -20,3 +22,5 @@
   - [x] Update moves in each page
   - [x] Switch player
   - [x] Display each player the updated moves
+  - [x] Check the winning logic
+  - [x] Stop a player to join a room which is full

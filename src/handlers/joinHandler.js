@@ -19,7 +19,13 @@ const joinHandler = games => (req, res, next) => {
 
   const game = games[gameId];
   const player = new Player(req.session.username);
-  game.join(player);
+  const result = game.join(player);
+
+  if (!result) {
+    res.json({ message: 'This room is full' });
+    return;
+  }
+
   req.session.gameId = gameId;
   res.redirect('/game');
 };
